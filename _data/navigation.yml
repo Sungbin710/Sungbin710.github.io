@@ -1,9 +1,11 @@
 # main links
 main:
-  - title: "IT tech"
-    url: /technology/
+  - title: "Embedded"
+    url: /embedded/
   - title: "Algorithm"
     url: /algorithm/
+  - title: "About"
+    url: /about/
   # - title: "About"
   #   url: https://mmistakes.github.io/minimal-mistakes/about/
   # - title: "Sample Posts"

@@ -1,13 +1,13 @@
 var store = [{
-        "title": "launching blog!",
-        "excerpt":"blog를 시작합니다!   ","categories": [],
+        "title": "Algorithm 카테고리 개설",
+        "excerpt":"Algorithm을 시작합니다!   ","categories": ["Algorithm"],
         "tags": [],
-        "url": "/first-post/",
+        "url": "/algorithm/second-post/",
         "teaser": null
       },{
-        "title": "Algorithm 카테고리 개설",
-        "excerpt":"Algorithm을 시작합니다!   ","categories": [],
+        "title": "Embedded System start!",
+        "excerpt":"Embedded System!!   ","categories": ["embedded"],
         "tags": [],
-        "url": "/second-post/",
+        "url": "/embedded/first-post/",
         "teaser": null
       }]

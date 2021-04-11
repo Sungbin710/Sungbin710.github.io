@@ -1,1 +1,1 @@
-Sitemap: /sitemap.xml
+Sitemap: https://sungbin710.github.io/sitemap.xml

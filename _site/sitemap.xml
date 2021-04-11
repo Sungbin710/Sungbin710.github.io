@@ -1,17 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 <url>
-<loc>/first-post/</loc>
+<loc>https://sungbin710.github.io/algorithm/second-post/</loc>
 <lastmod>2021-03-15T00:00:00+09:00</lastmod>
 </url>
 <url>
-<loc>/second-post/</loc>
+<loc>https://sungbin710.github.io/embedded/first-post/</loc>
 <lastmod>2021-03-15T00:00:00+09:00</lastmod>
 </url>
 <url>
-<loc>/categories/</loc>
+<loc>https://sungbin710.github.io/about/</loc>
 </url>
 <url>
-<loc>/</loc>
+<loc>https://sungbin710.github.io/algorithm/</loc>
+</url>
+<url>
+<loc>https://sungbin710.github.io/categories/</loc>
+</url>
+<url>
+<loc>https://sungbin710.github.io/embedded/</loc>
+</url>
+<url>
+<loc>https://sungbin710.github.io/</loc>
+</url>
+<url>
+<loc>https://sungbin710.github.io/_pages/tag-archive/</loc>
 </url>
 </urlset>
