@@ -6,4 +6,3 @@ author_profile: true
 taxonomy: embedded 
 ---
 
-It's Embedded System Category

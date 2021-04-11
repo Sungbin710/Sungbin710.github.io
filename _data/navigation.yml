@@ -4,6 +4,8 @@ main:
     url: /embedded/
   - title: "Algorithm"
     url: /algorithm/
+  - title: "Separate"
+    url: /separate/
   - title: "About"
     url: /about/
   # - title: "About"
