@@ -1,5 +1,5 @@
 ---
-title: "성빈 블로그"
+title: "성빈's 블로그"
 permalink: /about/
 layout: category
 author_profile: true
