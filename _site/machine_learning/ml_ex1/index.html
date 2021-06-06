@@ -9,8 +9,8 @@
   <head>
     <meta charset="utf-8">
 
-<!-- begin _includes/seo.html --><title>알고리즘 카테고리 개설 - Sungbin’s blog</title>
-<meta name="description" content="">
+<!-- begin _includes/seo.html --><title>EX1_regression - Sungbin’s blog</title>
+<meta name="description" content="EX1">
 
 
   <meta name="author" content="Sungbin">
@@ -22,11 +22,11 @@
 <meta property="og:type" content="article">
 <meta property="og:locale" content="en_US">
 <meta property="og:site_name" content="Sungbin's blog">
-<meta property="og:title" content="알고리즘 카테고리 개설">
-<meta property="og:url" content="https://sungbin710.github.io/algorithm/algorithm-start/">
+<meta property="og:title" content="EX1_regression">
+<meta property="og:url" content="https://sungbin710.github.io/machine_learning/ml_ex1/">
 
 
-  <meta property="og:description" content="">
+  <meta property="og:description" content="EX1">
 
 
 
@@ -36,11 +36,11 @@
 
 
 
-  <meta property="article:published_time" content="2021-04-11T00:00:00+09:00">
+  <meta property="article:published_time" content="2021-06-06T00:00:00+09:00">
 
 
 
-  <meta property="article:modified_time" content="2021-03-15T00:00:00+09:00">
+  <meta property="article:modified_time" content="2021-06-06T00:00:00+09:00">
 
 
 
@@ -49,7 +49,7 @@
   
 
 
-<link rel="canonical" href="https://sungbin710.github.io/algorithm/algorithm-start/">
+<link rel="canonical" href="https://sungbin710.github.io/machine_learning/ml_ex1/">
 
 
 
@@ -285,15 +285,15 @@
 
 
   <article class="page" itemscope itemtype="https://schema.org/CreativeWork">
-    <meta itemprop="headline" content="알고리즘 카테고리 개설">
-    <meta itemprop="description" content="">
-    <meta itemprop="datePublished" content="2021-04-11T00:00:00+09:00">
-    <meta itemprop="dateModified" content="2021-03-15T00:00:00+09:00">
+    <meta itemprop="headline" content="EX1_regression">
+    <meta itemprop="description" content="EX1">
+    <meta itemprop="datePublished" content="2021-06-06T00:00:00+09:00">
+    <meta itemprop="dateModified" content="2021-06-06T00:00:00+09:00">
 
     <div class="page__inner-wrap">
       
         <header>
-          <h1 id="page-title" class="page__title" itemprop="headline">알고리즘 카테고리 개설
+          <h1 id="page-title" class="page__title" itemprop="headline">EX1_regression
 </h1>
           
 
@@ -321,7 +321,64 @@
 
       <section class="page__content" itemprop="text">
         
-        
+        <h2 id="ex1">EX1</h2>
+
+<h4 id="라이브러리-사용">라이브러리 사용</h4>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="n">pd</span>
+<span class="kn">import</span> <span class="nn">tensorflow</span> <span class="k">as</span> <span class="n">tf</span>
+</code></pre></div></div>
+
+<h4 id="1-데이터-준비">1. 데이터 준비</h4>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># 1. 과거의 데이터 준비
+</span><span class="n">레몬에이드</span> <span class="o">=</span> <span class="n">pd</span><span class="p">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s">'lemonade.csv'</span><span class="p">)</span>
+<span class="n">레몬에이드</span>
+
+<span class="c1"># 독립변수/종속변수 분리
+</span><span class="n">독립</span> <span class="o">=</span> <span class="n">레몬에이드</span><span class="p">[[</span><span class="s">'온도'</span><span class="p">]]</span>
+<span class="n">종속</span> <span class="o">=</span> <span class="n">레몬에이드</span><span class="p">[[</span><span class="s">'판매량'</span><span class="p">]]</span>
+<span class="k">print</span><span class="p">(</span><span class="n">독립</span><span class="p">.</span><span class="n">shape</span><span class="p">,</span> <span class="n">종속</span><span class="p">.</span><span class="n">shape</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p><img src="/assets/images/machine_learning/ex1/lemonade.png" alt="lemonade" /></p>
+
+<ul>
+  <li>(6,1) (6,1)</li>
+</ul>
+
+<h4 id="2-모델의-구조-만들기">2. 모델의 구조 만들기</h4>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># 2. 모델의 구조 만들기
+</span><span class="n">X</span> <span class="o">=</span> <span class="n">tf</span><span class="p">.</span><span class="n">keras</span><span class="p">.</span><span class="n">layers</span><span class="p">.</span><span class="n">Input</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>		<span class="c1"># 독립 변수의 수:n =&gt; shape=[n]
+</span><span class="n">Y</span> <span class="o">=</span> <span class="n">tf</span><span class="p">.</span><span class="n">keras</span><span class="p">.</span><span class="n">layers</span><span class="p">.</span><span class="n">Dense</span><span class="p">(</span><span class="mi">1</span><span class="p">)(</span><span class="n">X</span><span class="p">)</span>				<span class="c1"># 종속 변수의 수:n =&gt; Dense(n)
+</span><span class="n">model</span> <span class="o">=</span> <span class="n">tf</span><span class="p">.</span><span class="n">keras</span><span class="p">.</span><span class="n">models</span><span class="p">.</span><span class="n">Model</span><span class="p">(</span><span class="n">X</span><span class="p">,</span><span class="n">Y</span><span class="p">)</span>
+<span class="n">model</span><span class="p">.</span><span class="nb">compile</span><span class="p">(</span><span class="n">loss</span><span class="o">=</span><span class="s">'mse'</span><span class="p">)</span>
+</code></pre></div></div>
+
+<h4 id="3-모델-학습하기">3. 모델 학습하기</h4>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># 3. 데이터로 모델 학습하기
+</span><span class="n">model</span><span class="p">.</span><span class="n">fit</span><span class="p">(</span><span class="n">독립</span><span class="p">,</span><span class="n">종속</span><span class="p">,</span> <span class="n">epochs</span><span class="o">=</span><span class="mi">1000</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p><img src="/assets/images/machine_learning/ex1/fit1.png" alt="fit1" /></p>
+
+<p>loss가 높기 때문에 여러번 반복해서 fitting 하거나 epochs 수를 늘려서 실행한다.</p>
+
+<h4 id="4-모델-사용하기">4. 모델 사용하기</h4>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># 4. 모델 사용하기
+</span><span class="k">print</span><span class="p">(</span><span class="s">"Predictions: "</span><span class="p">,</span> <span class="n">model</span><span class="p">.</span><span class="n">predict</span><span class="p">([</span><span class="mi">15</span><span class="p">]))</span>
+</code></pre></div></div>
+
+<ul>
+  <li>Predictions:  [[16.385334]] :  fitting을 1회 수행 (loss: 441.5309)</li>
+  <li>Predictions:  [[30.629992]] :  fitting을 2회 수행 (loss: 0.0201)</li>
+</ul>
+
+<p>loss가 감소함에 따라 우리가 예측한 30의 값에 근접한 값을 도출한다.</p>
+
 
         
       </section>
@@ -340,14 +397,14 @@
     <strong><i class="fas fa-fw fa-folder-open" aria-hidden="true"></i> Categories: </strong>
     <span itemprop="keywords">
     
-      <a href="/categories/#algorithm" class="page__taxonomy-item" rel="tag">algorithm</a>
+      <a href="/categories/#machine-learning" class="page__taxonomy-item" rel="tag">machine_learning</a>
     
     </span>
   </p>
 
 
         
-  <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> Updated:</strong> <time datetime="2021-03-15">March 15, 2021</time></p>
+  <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> Updated:</strong> <time datetime="2021-06-06">June 6, 2021</time></p>
 
 
       </footer>
@@ -357,21 +414,22 @@
     <h4 class="page__share-title">Share on</h4>
   
 
-  <a href="https://twitter.com/intent/tweet?text=%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98+%EC%B9%B4%ED%85%8C%EA%B3%A0%EB%A6%AC+%EA%B0%9C%EC%84%A4%20https%3A%2F%2Fsungbin710.github.io%2Falgorithm%2Falgorithm-start%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+  <a href="https://twitter.com/intent/tweet?text=EX1_regression%20https%3A%2F%2Fsungbin710.github.io%2Fmachine_learning%2Fml_ex1%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
 
-  <a href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fsungbin710.github.io%2Falgorithm%2Falgorithm-start%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+  <a href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fsungbin710.github.io%2Fmachine_learning%2Fml_ex1%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
 
-  <a href="https://www.linkedin.com/shareArticle?mini=true&url=https%3A%2F%2Fsungbin710.github.io%2Falgorithm%2Falgorithm-start%2F" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=https%3A%2F%2Fsungbin710.github.io%2Fmachine_learning%2Fml_ex1%2F" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
 </section>
 
 
       
   <nav class="pagination">
     
-      <a href="#" class="pagination--pager disabled">Previous</a>
+      <a href="/machine_learning/ml_env/" class="pagination--pager" title="개발환경 구축
+">Previous</a>
     
     
-      <a href="/embedded/embedded-start/" class="pagination--pager" title="임베디드 시스템 카테고리 개설!
+      <a href="/machine_learning/ml_ex2/" class="pagination--pager" title="EX2_classification
 ">Next</a>
     
   </nav>
@@ -422,46 +480,6 @@
 
 
     <p class="archive__item-excerpt" itemprop="description">EX2
-</p>
-  </article>
-</div>
-
-        
-          
-
-
-
-<div class="grid__item">
-  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
-    
-    <h2 class="archive__item-title no_toc" itemprop="headline">
-      
-        <a href="/machine_learning/ml_ex1/" rel="permalink">EX1_regression
-</a>
-      
-    </h2>
-    
-
-  <p class="page__meta">
-    
-
-    
-
-    
-      
-      
-
-      <span class="page__meta-readtime">
-        <i class="far fa-clock" aria-hidden="true"></i>
-        
-          less than 1 minute read
-        
-      </span>
-    
-  </p>
-
-
-    <p class="archive__item-excerpt" itemprop="description">EX1
 </p>
   </article>
 </div>
@@ -542,6 +560,46 @@
 
 
     <p class="archive__item-excerpt" itemprop="description">Pandas
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/web_publishing/web_publishing/" rel="permalink">웹 개발 공부
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          less than 1 minute read
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">velog.io의 0307kwon님의 글
 </p>
   </article>
 </div>

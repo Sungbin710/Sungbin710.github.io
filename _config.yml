@@ -20,7 +20,7 @@ title                    : "Sungbin's blog"
 title_separator          : "-"
 subtitle                 : # site tagline that appears below site title in masthead
 name                     : "Sungbin"
-description              : "gradually growing"
+description              : "growing"
 url                      : "https://Sungbin710.github.io" # the base hostname & protocol for your site e.g. "https://mmistakes.github.io"
 baseurl                  : # the subpath of your site, e.g. "/blog"
 repository               : # GitHub username/repo-name e.g. "mmistakes/minimal-mistakes"
@@ -96,7 +96,7 @@ analytics:
 author:
   name             : "Sungbin"
   avatar           : "/assets/images/teaser.png"# path of avatar image, e.g. "/assets/images/bio-photo.jpg"
-  bio              : "I am an **Master** student in KNU."
+  bio              : "I am an Master student in KNU."
   location         : "Somewhere"
   email            :
   links:
@@ -114,7 +114,7 @@ author:
       # url: "https://facebook.com/"
     - label: "GitHub"
       icon: "fab fa-fw fa-github"
-      # url: "https://github.com/"
+      url: "https://github.com/Sungbin710"
     - label: "Instagram"
       icon: "fab fa-fw fa-instagram"
       # url: "https://instagram.com/"
@@ -130,7 +130,7 @@ footer:
       # url:
     - label: "GitHub"
       icon: "fab fa-fw fa-github"
-      # url:
+      #url: "https://github.com/Sungbin710"
     - label: "GitLab"
       icon: "fab fa-fw fa-gitlab"
       # url:

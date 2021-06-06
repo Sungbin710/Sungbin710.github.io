@@ -1,1 +1,312 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.0">Jekyll</generator><link href="https://sungbin710.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://sungbin710.github.io/" rel="alternate" type="text/html" /><updated>2021-04-12T13:38:53+09:00</updated><id>https://sungbin710.github.io/feed.xml</id><title type="html">Sungbin’s blog</title><subtitle>gradually growing</subtitle><author><name>Sungbin</name></author><entry><title type="html">알고리즘 카테고리 개설</title><link href="https://sungbin710.github.io/algorithm/algorithm-start/" rel="alternate" type="text/html" title="알고리즘 카테고리 개설" /><published>2021-04-11T00:00:00+09:00</published><updated>2021-03-15T00:00:00+09:00</updated><id>https://sungbin710.github.io/algorithm/algorithm-start</id><content type="html" xml:base="https://sungbin710.github.io/algorithm/algorithm-start/"></content><author><name>Sungbin</name></author><category term="algorithm" /><summary type="html"></summary></entry><entry><title type="html">임베디드 시스템 카테고리 개설!</title><link href="https://sungbin710.github.io/embedded/embedded-start/" rel="alternate" type="text/html" title="임베디드 시스템 카테고리 개설!" /><published>2021-04-11T00:00:00+09:00</published><updated>2021-04-11T00:00:00+09:00</updated><id>https://sungbin710.github.io/embedded/embedded-start</id><content type="html" xml:base="https://sungbin710.github.io/embedded/embedded-start/"></content><author><name>Sungbin</name></author><category term="embedded" /><summary type="html"></summary></entry></feed>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.0">Jekyll</generator><link href="https://sungbin710.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://sungbin710.github.io/" rel="alternate" type="text/html" /><updated>2021-06-06T06:00:00+09:00</updated><id>https://sungbin710.github.io/feed.xml</id><title type="html">Sungbin’s blog</title><subtitle>growing</subtitle><author><name>Sungbin</name></author><entry><title type="html">EX2_classification</title><link href="https://sungbin710.github.io/machine_learning/ml_ex2/" rel="alternate" type="text/html" title="EX2_classification" /><published>2021-06-06T00:00:00+09:00</published><updated>2021-06-06T00:00:00+09:00</updated><id>https://sungbin710.github.io/machine_learning/ml_ex2</id><content type="html" xml:base="https://sungbin710.github.io/machine_learning/ml_ex2/">&lt;h2 id=&quot;ex2&quot;&gt;EX2&lt;/h2&gt;
+
+&lt;h4 id=&quot;라이브러리-사용&quot;&gt;라이브러리 사용&lt;/h4&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;pandas&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;as&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;pd&lt;/span&gt;
+&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;tensorflow&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;as&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;tf&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h4 id=&quot;데이터-준비&quot;&gt;데이터 준비&lt;/h4&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;파일경로&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;'iris.csv'&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;아이리스&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;pd&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;read_csv&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;파일경로&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;아이리스&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;head&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;img src=&quot;\assets\images\machine_learning\ex2\iris_head.png&quot; alt=&quot;iris_head&quot; /&gt;&lt;/p&gt;
+
+&lt;h4 id=&quot;one-hot-encoding&quot;&gt;one-hot encoding&lt;/h4&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;인코딩&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;pd&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;get_dummies&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;아이리스&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;인코딩&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;head&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;img src=&quot;\assets\images\machine_learning\ex2\iris_encoding.png&quot; alt=&quot;iris_encoding&quot; /&gt;&lt;/p&gt;
+
+&lt;h4 id=&quot;독립변수-종속변수&quot;&gt;독립변수, 종속변수&lt;/h4&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;인코딩&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;columns&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;독립&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;인코딩&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'꽃잎길이'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;'꽃잎폭'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;'꽃받침길이'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;'꽃받침폭'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]]&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;종속&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;인코딩&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'품종_setosa'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;'품종_versicolor'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;'품종_virginica'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]]&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;독립&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;shape&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;종속&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;shape&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Index([‘꽃잎길이’, ‘꽃잎폭’, ‘꽃받침길이’, ‘꽃받침폭’, ‘품종_setosa’, ‘품종_versicolor’,
+‘품종_virginica’],
+dtype=’object’)&lt;/li&gt;
+  &lt;li&gt;(150, 4) (150, 3)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&quot;모델의-구조-만들기&quot;&gt;모델의 구조 만들기&lt;/h4&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;X&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;tf&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;keras&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;layers&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Input&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;shape&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;4&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;Y&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;tf&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;keras&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;layers&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Dense&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;activation&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'softmax'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;X&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;model&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;tf&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;keras&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;models&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Model&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;X&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Y&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;model&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;compile&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;loss&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'categorical_crossentropy'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;metrics&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'accuracy'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h4 id=&quot;모델-학습시키기&quot;&gt;모델 학습시키기&lt;/h4&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;model&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;fit&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;독립&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;종속&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;epochs&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;100&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;img src=&quot;\assets\images\machine_learning\ex2\iris_epochs.png&quot; alt=&quot;iris_epochs&quot; /&gt;&lt;/p&gt;
+
+&lt;h4 id=&quot;모델-이용하기&quot;&gt;모델 이용하기&lt;/h4&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;model&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;predict&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;독립&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;5&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;종속&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;5&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;img src=&quot;\assets\images\machine_learning\ex2\iris_predict.png&quot; alt=&quot;iris_predict&quot; /&gt;&lt;/p&gt;
+
+&lt;h4 id=&quot;학습한-가중치&quot;&gt;학습한 가중치&lt;/h4&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;model&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;get_weights&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;img src=&quot;\assets\images\machine_learning\ex2\iris_weights.png&quot; alt=&quot;iris_weights&quot; /&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;각각의 종속변수에 대한 weights와 bias가 존재&lt;/li&gt;
+&lt;/ul&gt;</content><author><name>Sungbin</name></author><category term="machine_learning" /><summary type="html">EX2</summary></entry><entry><title type="html">EX1_regression</title><link href="https://sungbin710.github.io/machine_learning/ml_ex1/" rel="alternate" type="text/html" title="EX1_regression" /><published>2021-06-06T00:00:00+09:00</published><updated>2021-06-06T00:00:00+09:00</updated><id>https://sungbin710.github.io/machine_learning/ml_ex1</id><content type="html" xml:base="https://sungbin710.github.io/machine_learning/ml_ex1/">&lt;h2 id=&quot;ex1&quot;&gt;EX1&lt;/h2&gt;
+
+&lt;h4 id=&quot;라이브러리-사용&quot;&gt;라이브러리 사용&lt;/h4&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;pandas&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;as&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;pd&lt;/span&gt;
+&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;tensorflow&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;as&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;tf&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h4 id=&quot;1-데이터-준비&quot;&gt;1. 데이터 준비&lt;/h4&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;# 1. 과거의 데이터 준비
+&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;레몬에이드&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;pd&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;read_csv&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'lemonade.csv'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;레몬에이드&lt;/span&gt;
+
+&lt;span class=&quot;c1&quot;&gt;# 독립변수/종속변수 분리
+&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;독립&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;레몬에이드&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'온도'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]]&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;종속&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;레몬에이드&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'판매량'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]]&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;독립&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;shape&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;종속&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;shape&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/machine_learning/ex1/lemonade.png&quot; alt=&quot;lemonade&quot; /&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;(6,1) (6,1)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&quot;2-모델의-구조-만들기&quot;&gt;2. 모델의 구조 만들기&lt;/h4&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;# 2. 모델의 구조 만들기
+&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;X&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;tf&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;keras&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;layers&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Input&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;shape&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt;		&lt;span class=&quot;c1&quot;&gt;# 독립 변수의 수:n =&amp;gt; shape=[n]
+&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Y&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;tf&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;keras&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;layers&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Dense&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;X&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;				&lt;span class=&quot;c1&quot;&gt;# 종속 변수의 수:n =&amp;gt; Dense(n)
+&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;model&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;tf&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;keras&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;models&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Model&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;X&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Y&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;model&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;compile&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;loss&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'mse'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h4 id=&quot;3-모델-학습하기&quot;&gt;3. 모델 학습하기&lt;/h4&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;# 3. 데이터로 모델 학습하기
+&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;model&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;fit&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;독립&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;종속&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;epochs&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1000&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/machine_learning/ex1/fit1.png&quot; alt=&quot;fit1&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;loss가 높기 때문에 여러번 반복해서 fitting 하거나 epochs 수를 늘려서 실행한다.&lt;/p&gt;
+
+&lt;h4 id=&quot;4-모델-사용하기&quot;&gt;4. 모델 사용하기&lt;/h4&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;# 4. 모델 사용하기
+&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Predictions: &quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;model&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;predict&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;([&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;15&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]))&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Predictions:  [[16.385334]] :  fitting을 1회 수행 (loss: 441.5309)&lt;/li&gt;
+  &lt;li&gt;Predictions:  [[30.629992]] :  fitting을 2회 수행 (loss: 0.0201)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;loss가 감소함에 따라 우리가 예측한 30의 값에 근접한 값을 도출한다.&lt;/p&gt;</content><author><name>Sungbin</name></author><category term="machine_learning" /><summary type="html">EX1</summary></entry><entry><title type="html">개발환경 구축</title><link href="https://sungbin710.github.io/machine_learning/ml_env/" rel="alternate" type="text/html" title="개발환경 구축" /><published>2021-06-06T00:00:00+09:00</published><updated>2021-06-06T00:00:00+09:00</updated><id>https://sungbin710.github.io/machine_learning/ml_env</id><content type="html" xml:base="https://sungbin710.github.io/machine_learning/ml_env/">&lt;h2 id=&quot;개발환경-구축&quot;&gt;개발환경 구축&lt;/h2&gt;
+
+&lt;h4 id=&quot;필요한-이유&quot;&gt;필요한 이유&lt;/h4&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;독립적인 작업환경에서 작업하기 위함이다.&lt;/li&gt;
+  &lt;li&gt;프로젝트 진행에 있어 여러 라이브러리, 패키지 다운로드에 있어 각 라이브러리들끼리 충돌 또는 특정 버전과 호환문제가 발생할 수 있다.&lt;/li&gt;
+  &lt;li&gt;이를 방지하기 위해 프로젝트 단위로 가상환경을 구성하여 필요한 라이브러리를 설치해서 작업한다.&lt;/li&gt;
+  &lt;li&gt;이를 통해 다른 컴퓨터 혹은 다른 환경에서 동일한 프로그램을 실행시킬 때, 작업환경을 고정시켰으므로 해당 환경에 맞게 구성하면, 작업환경과 버전 문제로 실행되지 않는 문제를 방지할 수 있다.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&quot;가상환경-구축&quot;&gt;가상환경 구축&lt;/h4&gt;
+
+&lt;p&gt;아나콘다 설치 후 프롬프트 실행&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;가상환경 생성
+    &lt;ul&gt;
+      &lt;li&gt;추가적인 명령어를 통해 특정 python 버전을 설치할 수 있다.&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;conda create -n &amp;lt;가상환경이름&amp;gt;
+conda create -n &amp;lt;가상환경이름&amp;gt; (python=&amp;lt;버전&amp;gt;)
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;가상환경 리스트 확인&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;conda env list
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;가상환경 활성화&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;conda activate &amp;lt;가상환경이름&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;가상환경 비활성화&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;conda deactivate &amp;lt;가상환경이름&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;가상환경 삭제&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;conda env remove -n &amp;lt;가상환경이름&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h4 id=&quot;개발환경-구축-1&quot;&gt;개발환경 구축&lt;/h4&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;새로운 터미널 창을 cmd를 default로 설정할 때
+    &lt;ul&gt;
+      &lt;li&gt;View -&amp;gt; Command Palette… -&amp;gt; Select default profile 입력 -&amp;gt; Command prompt&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;가상환경 활성화
+    &lt;ul&gt;
+      &lt;li&gt;C:\Users\dltjs\anaconda3\Scripts\activate를 입력하여 anaconda prompt를 활성화한다.&lt;/li&gt;
+      &lt;li&gt;conda env list 명령어를 통해 활성화시킬 가상환경을 확인한다.&lt;/li&gt;
+      &lt;li&gt;conda activate &lt;가상환경이름&gt;을 통해 가상환경을 활성화한다.&lt;/가상환경이름&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;필요한 라이브러리 설치
+    &lt;ul&gt;
+      &lt;li&gt;각각의 가상환경을 활성화한후 필요한 라이브러리를 설치할 수 있다.&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;</content><author><name>Sungbin</name></author><category term="machine_learning" /><summary type="html">개발환경 구축</summary></entry><entry><title type="html">pandas 사용법</title><link href="https://sungbin710.github.io/machine_learning/ml_pandas/" rel="alternate" type="text/html" title="pandas 사용법" /><published>2021-06-05T00:00:00+09:00</published><updated>2021-06-05T00:00:00+09:00</updated><id>https://sungbin710.github.io/machine_learning/ml_pandas</id><content type="html" xml:base="https://sungbin710.github.io/machine_learning/ml_pandas/">&lt;h2 id=&quot;pandas&quot;&gt;Pandas&lt;/h2&gt;
+
+&lt;h4 id=&quot;기본-사용법&quot;&gt;기본 사용법&lt;/h4&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;# 판다스 라이브러리 import
+&lt;/span&gt;&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;pandas&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;as&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;pd&lt;/span&gt;
+
+&lt;span class=&quot;c1&quot;&gt;# 파일로부터 데이터 읽어오기
+&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;file_path&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;'lemonade.csv'&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;lemonade&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;pd&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;read_csv&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;file_path&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;lemonade&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;img src=&quot;\assets\images\machine_learning\pandas/lemonade.png&quot; alt=&quot;lemonade&quot; /&gt;&lt;/p&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;# 데이터 모양 확인하기
+&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;lemonade&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;shape&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;(6, 2)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;# 칼럼이름 출력
+&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;lemonade&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;columns&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Index([‘온도’, ‘판매량’], dtype=’object’)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;# 칼럼 독립변수, 종속변수로 분리
+&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;indep&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;lemonade&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'온도'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]]&lt;/span&gt;			&lt;span class=&quot;c1&quot;&gt;# 독립 변수
+&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;dep&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;lemonade&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'판매량'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]]&lt;/span&gt;			&lt;span class=&quot;c1&quot;&gt;# 종속 변수			
+&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;indep&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;shape&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;dep&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;shape&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;(6, 1) (6, 1)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;lemonade&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;head&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;		&lt;span class=&quot;c1&quot;&gt;# 상위 (default = 5) 행
+#lemonade.tail()		# 하위 (default = 5) 행
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;img src=&quot;\assets\images\machine_learning\pandas\lemon_head.png&quot; alt=&quot;lemon_head&quot; /&gt;&lt;/p&gt;</content><author><name>Sungbin</name></author><category term="machine_learning" /><summary type="html">Pandas</summary></entry><entry><title type="html">웹 개발 공부</title><link href="https://sungbin710.github.io/web_publishing/web_publishing/" rel="alternate" type="text/html" title="웹 개발 공부" /><published>2021-04-29T00:00:00+09:00</published><updated>2021-04-29T00:00:00+09:00</updated><id>https://sungbin710.github.io/web_publishing/web_publishing</id><content type="html" xml:base="https://sungbin710.github.io/web_publishing/web_publishing/">&lt;p&gt;velog.io의 0307kwon님의 글&lt;/p&gt;
+
+&lt;h2 id=&quot;기본-개념&quot;&gt;기본 개념&lt;/h2&gt;
+
+&lt;h4 id=&quot;웹-브라우저-클라이언트&quot;&gt;웹 브라우저( 클라이언트)&lt;/h4&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;필요한 파일들(html,js,css …)을 받아 해석하고 사용자에게 보여주는 브라우저&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&quot;웹-서버&quot;&gt;웹 서버&lt;/h4&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;클라이언트의 요청(url)에 따라 적절히 응답해주는 프로그램&lt;/li&gt;
+  &lt;li&gt;프론트 서버
+    &lt;ul&gt;
+      &lt;li&gt;정적 or 동적인 페이지를 응답하기 위한 서버&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;백엔드 서버
+    &lt;ul&gt;
+      &lt;li&gt;사용자의 요청을 받았을 때 DB에서 적절한 데이터를 가져와 응답하기 위한 서버&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&quot;db&quot;&gt;DB&lt;/h4&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;사용자의 목록, 정보 등 중요한 데이터들이 저장된 저장소&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;웹페이지가-동작하는-원리&quot;&gt;웹페이지가 동작하는 원리&lt;/h3&gt;
+
+&lt;h4 id=&quot;mpamultiple-page-application&quot;&gt;MPA(Multiple Page Application)&lt;/h4&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;모든 페이지가 각각의 html로 이루어짐&lt;/li&gt;
+  &lt;li&gt;즉, 하나의 페이지에서 다른 페이지로 이동할 때, 반드시 프론트 서버에 요청을 보내고 원하는 페이지의 응답을 받아야 함&lt;/li&gt;
+  &lt;li&gt;단점
+    &lt;ul&gt;
+      &lt;li&gt;페이지가 바뀔 때마다 매번 완전한 페이지를 응답 받음
+        &lt;ul&gt;
+          &lt;li&gt;필요한 부분만 응답으로 받는 방식에 비해 비효율적&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+      &lt;li&gt;페이지가 바뀔 때마다 브라우저가 깜빡임
+        &lt;ul&gt;
+          &lt;li&gt;사용자 경험상 좋지 않음&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&quot;spasingle-page-application&quot;&gt;SPA(Single Page Application)&lt;/h4&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;하나의 페이지(html)에서 모두 처리하는 방식&lt;/li&gt;
+  &lt;li&gt;사용자가 초기 url에 접근할 때, 웹에서 이동가능한 모든 페이지에 대한 파일을 클라이언트로 받아 옴 (초기 페이지 로딩이 오래 걸릴 수 있음)&lt;/li&gt;
+  &lt;li&gt;페이지 전환 시 프론트 서버에 요청을 보내는 것이 아닌 웹 클라이언트 자체적으로 js에 의해 전환 됨 (js가 라우팅을 담당)&lt;/li&gt;
+  &lt;li&gt;페이지 내에 동적으로 변해야 하는 부분이 있는 경우, 해당 정보만 백엔드 서버에 요청하여 응답을 받고 웹에 갱신함&lt;/li&gt;
+&lt;/ul&gt;</content><author><name>Sungbin</name></author><category term="web_publishing" /><summary type="html">velog.io의 0307kwon님의 글</summary></entry><entry><title type="html">알고리즘 카테고리 개설</title><link href="https://sungbin710.github.io/algorithm/algorithm-start/" rel="alternate" type="text/html" title="알고리즘 카테고리 개설" /><published>2021-04-11T00:00:00+09:00</published><updated>2021-03-15T00:00:00+09:00</updated><id>https://sungbin710.github.io/algorithm/algorithm-start</id><content type="html" xml:base="https://sungbin710.github.io/algorithm/algorithm-start/"></content><author><name>Sungbin</name></author><category term="algorithm" /><summary type="html"></summary></entry><entry><title type="html">임베디드 시스템 카테고리 개설!</title><link href="https://sungbin710.github.io/embedded/embedded-start/" rel="alternate" type="text/html" title="임베디드 시스템 카테고리 개설!" /><published>2021-04-11T00:00:00+09:00</published><updated>2021-04-11T00:00:00+09:00</updated><id>https://sungbin710.github.io/embedded/embedded-start</id><content type="html" xml:base="https://sungbin710.github.io/embedded/embedded-start/"></content><author><name>Sungbin</name></author><category term="embedded" /><summary type="html"></summary></entry></feed>

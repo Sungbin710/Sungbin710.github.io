@@ -4,6 +4,8 @@ main:
     url: /embedded/
   - title: "Algorithm"
     url: /algorithm/
+  - title: "Machine Learning"
+    url: /machine_learning/
   - title: "Web publishing"
     url: /web_publishing/
   - title: "About"
