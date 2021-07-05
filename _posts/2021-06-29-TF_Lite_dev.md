@@ -62,7 +62,7 @@ model.summary()
 - keras의 Sequential class를 사용해서 Dense Layer를 2개 쌓았다. 
 - 첫 번째 레이어는 unit 개수는 10개, 두 번째 레이어의 unit 개수는 1개로 구성하였다.
 
-![summary](\assets\images\machine_learning\TF_LITE\summary.png)
+![summary](\assets\images\machine_learning\tf_lite\summary.png)
 
 - model.summary()를 통해 생성한 모델의 결과를 볼 수 있다.
 
@@ -80,12 +80,12 @@ weight = model.get_weights()
 print("weight: ", weight)
 ```
 
-![training](\assets\images\machine_learning\TF_LITE\training.png)
+![training](\assets\images\machine_learning\tf_lite\training.png)
 
 - 학습을 수행한다.
 - verbose는 default로 1로 지정되어 있고, 1이면 학습이 진행되는 것을 시각적으로 보이게 표현, 0이면 표현하지 않음
 
-![weight](\assets\images\machine_learning\TF_LITE\weight.png)
+![weight](\assets\images\machine_learning\tf_lite\weight.png)
 
 - weight 값을 직접 확인할 수 있다.
 
@@ -102,7 +102,7 @@ test_output = model.predict(test_input)
 print("output: ", test_output.tolist())
 ```
 
-![prediction](\assets\images\machine_learning\TF_LITE\prediction.png)
+![prediction](\assets\images\machine_learning\tf_lite\prediction.png)
 
 - 학습을 통해 학습하고자 한 함수 _output = _input * 100 + 5에 근접한 결과를 확인한다.
 - 학습이 완료되면, 학습된 weight 값들을 잃어버러지 않게 모델을 저장해준다.
@@ -116,7 +116,7 @@ print("output: ", test_output.tolist())
 model.save('saved_model/my_model')
 ```
 
-![save](\assets\images\machine_learning\TF_LITE\save.png)
+![save](\assets\images\machine_learning\tf_lite\save.png)
 
 - 지정한 경로에 pb 파일과 2개의 폴더로 모델 정보를 저장한 것을 확인할 수 있다.
 
@@ -184,7 +184,7 @@ for i in range(len(weight)):
     print("")
 ```
 
-![weight2](\assets\images\machine_learning\TF_LITE\weight2.png)
+![weight2](\assets\images\machine_learning\tf_lite\weight2.png)
 
 - Dense Layer의 weight와 bias가 순서대로 출력된다.
 
@@ -203,7 +203,7 @@ tf.keras.utils.plot_model(
 - 모델을 그래프로 그려주는 함수를 사용하여, 간략히 모델 그래프를 그려볼 수 있다.
 - 아래와 같은 png 파일을 생성하여 준다.
 
-![model_image](\assets\images\machine_learning\TF_LITE\model_image.png)
+![model_image](\assets\images\machine_learning\tf_lite\model_image.png)
 
 
 
@@ -322,7 +322,7 @@ input_shape = input_details[0]['shape']
 input_data = np.array(np.random.randint(0,1000, size=input_shape), dtype=np.float32)
 ```
 
-![input_details](\assets\images\machine_learning\TF_LITE\input_details.png)
+![input_details](\assets\images\machine_learning\tf_lite\input_details.png)
 
 - tensorflow.lite.Interpreter 클래스의 get_input_details() 와 get_output_details()를 통해 세부 정보를 받아온다. 
 - 랜덤하게 input_shape 만큼의 입력 데이터를 생성하여 input_data에 저장한다.
@@ -347,6 +347,6 @@ print("output : %s" % output_data)
 - input_data 값을 확인한다.
 - input_data를 tflite model의 input으로 할당하고, invoke()를 통해 추론을 실행한다.
 
-![inference](\assets\images\machine_learning\TF_LITE\inference.png)
+![inference](\assets\images\machine_learning\tf_lite\inference.png)
 
 - 추론을 실행한 후에, get_tensor() 함수를 사용하여 output 텐서에 저장되어 있는 값을 불러와서 출력한다.
